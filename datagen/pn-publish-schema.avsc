@@ -1,0 +1,76 @@
+{
+  "type": "record",
+  "name": "KafkaData",
+  "fields": [
+    {
+      "name": "channel",
+      "type": {
+        "type": "string",
+        "arg.properties": {
+          "regex": "channel-\\d{1,3}"
+        }
+      }
+    },
+    {
+      "name": "actualChannel",
+      "type": [
+        "null",
+        {
+          "type": "string",
+          "arg.properties": {
+            "regex": "channel-\\d{1,3}"
+          }
+        }
+      ],
+      "default": null
+    },
+    {
+      "name": "subscribedChannel",
+      "type": {
+        "type": "string",
+        "arg.properties": {
+          "regex": "channel-\\d{1,3}"
+        }
+      }
+    },
+    {
+      "name": "timetoken",
+      "type": {
+        "type": "string",
+        "arg.properties": {
+          "regex": "\\d{13}"
+        }
+      }
+    },
+    {
+      "name": "publisher",
+      "type": {
+        "type": "string",
+        "arg.properties": {
+          "regex": "user-\\d{1,4}"
+        }
+      }
+    },
+    {
+      "name": "message",
+      "type": {
+        "type": "string",
+        "arg.properties": {
+          "length": {
+            "min": 1,
+            "max": 255
+          }
+        }
+      }
+    },
+    {
+      "name": "subscribeKey",
+      "type": {
+        "type": "string",
+        "arg.properties": {
+          "regex": "sub-c-[a-c]{3}"
+        }
+      }
+    }
+  ]
+}

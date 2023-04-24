@@ -1,0 +1,5 @@
+kafka
+zookeeper
+.idea
+.gradle
+.DS_Store
