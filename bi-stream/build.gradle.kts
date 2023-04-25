@@ -16,7 +16,7 @@ repositories {
 }
 
 
-val confluentKafka = "7.3.3"
+val confluentKafka = "7.3.3-ccs"
 val jsonPathVer = "2.0.1"
 val jacksonVer = "2.13.1"
 val log4jslf4jVer = "2.17.2"
@@ -33,7 +33,9 @@ dependencies {
     implementation("com.fasterxml.jackson.datatype:jackson-datatype-jsr310")
     implementation("com.fasterxml.jackson.module:jackson-module-kotlin")
 
-    implementation("org.apache.kafka:kafka-streams:$confluentKafka-ccs")
+    implementation("org.apache.kafka:kafka-streams:$confluentKafka")
+    implementation("org.apache.kafka:connect-api:$confluentKafka")
+    implementation("org.apache.kafka:connect-json:$confluentKafka")
     testImplementation(kotlin("test"))
 }
 

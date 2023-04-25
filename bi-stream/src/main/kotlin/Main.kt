@@ -14,8 +14,8 @@ fun main(args: Array<String>) {
     val props = Properties()
     props[StreamsConfig.BOOTSTRAP_SERVERS_CONFIG] = "localhost:9092"
 //    props[StreamsConfig.APPLICATION_ID_CONFIG] = "my-application-id-${Random.nextInt(10)}"
-    props[StreamsConfig.APPLICATION_ID_CONFIG] = "my-application-id-p-test-2"
-//    props[StreamsConfig.COMMIT_INTERVAL_MS_CONFIG] = "10000"
+    props[StreamsConfig.APPLICATION_ID_CONFIG] = "my-application-id-p-test-5"
+    props[StreamsConfig.COMMIT_INTERVAL_MS_CONFIG] = "1000"
 
     val streams = KafkaStreams(topology, props)
     println(topology.describe())

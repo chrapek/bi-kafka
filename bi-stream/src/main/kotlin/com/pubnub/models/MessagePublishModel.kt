@@ -10,6 +10,31 @@ data class MessagePublishModel(
     val subscribeKey: String
 )
 
+
 data class AggregatedPublish(
-    val channelsCount: Map<String, Long>,
+    val subscribeKey: String = "",
+    val channelsCount: List<ChannelCount>,
+    val startDate: Long = 0,
+    val endDate: Long = 0,
 )
+
+data class ChannelCount(
+    val channel: String,
+    val count: Long,
+)
+
+
+
+//data class AggregatedPublish(
+//    val subscribeKey: String = "",
+//    val channelsCount: MutableMap<String, Long>,
+//    val startDate: Long = 0,
+//    val endDate: Long = 0,
+//)
+//
+//data class AggregatedPublishSer(
+//    val subscribeKey: String = "",
+//    val channelsCount: MutableMap<String, Long>,
+//    val startDate: Long = 0,
+//    val endDate: Long = 0,
+//)
