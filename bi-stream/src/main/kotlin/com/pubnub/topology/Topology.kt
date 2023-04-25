@@ -8,13 +8,14 @@ import org.apache.kafka.streams.KeyValue
 import org.apache.kafka.streams.StreamsBuilder
 import org.apache.kafka.streams.Topology
 import org.apache.kafka.streams.kstream.*
+import org.apache.kafka.streams.kstream.Suppressed.BufferConfig
 import java.time.Duration
 
 class Topology {
     fun buildTopology(): Topology {
         val builder = StreamsBuilder()
 
-        val publish = builder.stream("publish-test", Consumed.with(Serdes.String(), messageSerde))
+        val publish = builder.stream("publish", Consumed.with(Serdes.String(), messageSerde))
 
         publish
             .groupBy(
@@ -33,6 +34,7 @@ class Topology {
                 },
                 Materialized.with(Serdes.String(), aggregatedMessageSerde)
             )
+            .suppress(Suppressed.untilWindowCloses(BufferConfig.unbounded()))
             .toStream()
             .map { key, value ->
                 val aggregatedPublish = AggregatedPublish(
