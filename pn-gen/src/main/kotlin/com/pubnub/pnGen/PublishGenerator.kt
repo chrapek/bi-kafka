@@ -87,7 +87,8 @@ class PublishGenerator {
 
     fun generateCurrencyExchange(subscribeKey: String): Publish<CurrencyExchange> {
         val currencies = listOf("USD", "EUR", "PLN", "AUD", "INR", "SGD")
-        val channel = "${currencies[Random.nextInt(currencies.size)]}-${currencies[Random.nextInt(currencies.size)]}";
+        val selectedCurrencies = currencies.shuffled(Random).take(2)
+        val channel = "${selectedCurrencies[0]}-${selectedCurrencies[1]}";
         val msg = Publish<CurrencyExchange>(
             channel,
             actualChannel = channel,

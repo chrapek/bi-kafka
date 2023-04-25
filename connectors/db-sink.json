@@ -1,0 +1,19 @@
+{
+  "name": "pn_aggregate",
+  "config": {
+    "connector.class": "io.confluent.connect.jdbc.JdbcSinkConnector",
+    "task.max": "1",
+    "topics": "publish-aggregated-single",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "true",
+    "connection.url": "jdbc:postgresql://db:5432/bi-stream",
+    "connection.user": "postgres",
+    "connection.password": "postgres",
+    "auto.create": "true",
+    "auto.evolve": "true",
+    "insert.mode": "insert",
+    "batch.size": "2",
+    "table.name.format": "pn_aggregate"
+  }
+}

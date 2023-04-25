@@ -13,7 +13,8 @@ data class MessagePublishModel(
 
 data class AggregatedPublish(
     val subscribeKey: String = "",
-    val channelsCount: List<ChannelCount>,
+    val channel: String,
+    val count: Long,
     val startDate: Long = 0,
     val endDate: Long = 0,
 )
