@@ -30,14 +30,14 @@ class PnGenProducer(brokers: String) {
         val gam1 = Faker().random.nextUUID()
         val curr1 = Faker().random.nextUUID()
         while (true) {
-//            val messageChat1 = generator.generateMessageChat("sub-c-msg-1")
-//            val messageChat2 = generator.generateMessageChat("sub-c-msg-2-${msg2}")
-//            val gameState = generator.generateGameStateMessage("sub-c-gam-${gam1}")
+            val messageChat1 = generator.generateMessageChat("sub-c-msg-1")
+            val messageChat2 = generator.generateMessageChat("sub-c-msg-2-${msg2}")
+            val gameState = generator.generateGameStateMessage("sub-c-gam-${gam1}")
             val currencyExchange = generator.generateCurrencyExchange("sub-c-currency-ex")
 
-//            producer.send(ProducerRecord(topic, messageChat1.subscribeKey, gson.toJson(messageChat1)))
-//            producer.send(ProducerRecord(topic, messageChat2.subscribeKey, gson.toJson(messageChat2)))
-//            producer.send(ProducerRecord(topic, gameState.subscribeKey, gson.toJson(gameState)))
+            producer.send(ProducerRecord(topic, messageChat1.subscribeKey, gson.toJson(messageChat1)))
+            producer.send(ProducerRecord(topic, messageChat2.subscribeKey, gson.toJson(messageChat2)))
+            producer.send(ProducerRecord(topic, gameState.subscribeKey, gson.toJson(gameState)))
             producer.send(ProducerRecord(topic, currencyExchange.subscribeKey, gson.toJson(currencyExchange)))
 
             Thread.sleep(waitTimeBetweenIterationsMs)
